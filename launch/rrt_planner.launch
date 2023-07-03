@@ -1,0 +1,17 @@
+<launch>
+    <arg name="rviz_config" default="$(find rrt_planner)/cfg/rrt_planner.rviz"/>
+    <arg name="map_file" default="$(find rrt_planner)/cfg/map.yaml"/>
+    <arg name="max_dist" default="10"/>
+    <arg name="search_radius" default="30"/>
+    <arg name="variant" default="rrt_star"/>
+
+    <rosparam command="load" file="$(find rrt_planner)/cfg/config.yaml"/>
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz_config)"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+    <node pkg="rrt_planner" type="rrt_planner" name="rrt_planner" output="screen">
+        <param name="max_dist" value="$(arg max_dist)"/>
+        <param name="search_radius" value="$(arg search_radius)"/>
+        <param name="variant" value="$(arg variant)"/>
+    </node>
+</launch>
