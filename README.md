@@ -11,8 +11,9 @@ catkin build
 
 You can run the launch file given in the `launch` folder using:
 ```bash
-roslaunch rrt_planner rrt_planner.launch
+roslaunch rrt_planner rrt_planner.launch map:=
 ```
+Input the name of the map to launch after map:=
 
 This launch file automatically launches three nodes:
 - **RViz** For visualization
@@ -20,7 +21,7 @@ This launch file automatically launches three nodes:
 - **RRT Planner** to receive a map, initial pose, and goal pose, and calculate and publish a collision-free path as a `nav_msgs::Path` msg
 
 #### Map Server
-We have provided 5 example map images in the [resources](resources) directory that can be used to test your RRT implementation.
+2 example map images are provided in the [resources](resources) directory that can be used to test your RRT implementation.
 The map server node is responsible for loading a map file and publishing it as a `nav_msgs::OccupancyGrid` on the `/map` topic.
 To select the map file that should be loaded and published, configure the parameters in [cfg/map.yaml](cfg/map.yaml) file.
 
@@ -32,3 +33,7 @@ Or you can provide the same through the topics `/initialpose` and `/move_base_si
 ## Tuning
 Parameters can be provided to the RRT Planner node using the [cfg/config.yaml](cfg/config.yaml) file.
 Certain RRT parameters can be made configurable by adding them to this file.
+
+## Results
+![Alt text](RRT_star_map_1.png)
+![Alt text](RRT_star_map_5.png)
