@@ -1,0 +1,14 @@
+<launch>
+    <arg name="resources_dir" default="$(find rrt_planner)/resources"/>
+    <arg name="cfg_dir" default="$(find rrt_planner)/cfg"/>
+    <arg name="width" default="512"/>
+    <arg name="height" default="512"/>
+
+    <param name="resources_dir" value="$(arg resources_dir)"/>
+    <param name="cfg_dir" value="$(arg cfg_dir)"/>
+
+    <node pkg="rrt_planner" type="rrt_mapping" name="mapping" output="screen">
+        <param name="width" value="$(arg width)"/>
+        <param name="height" value="$(arg height)"/>
+    </node>
+</launch>

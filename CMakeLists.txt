@@ -25,9 +25,21 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+include_directories(${OpenCV_INCLUDE_DIRS})
+
 add_executable(${PROJECT_NAME} src/rrt_planner_node.cpp src/rrt_planner.cpp)
 add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+  ${OpenCV_LIBS}
+)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(rrt_mapping src/mapping_node.cpp src/mapping.cpp)
+target_link_libraries(rrt_mapping
+  stdc++fs
+  yaml-cpp
   ${catkin_LIBRARIES}
   ${OpenCV_LIBS}
 )

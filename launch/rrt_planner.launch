@@ -1,6 +1,7 @@
 <launch>
     <arg name="rviz_config" default="$(find rrt_planner)/cfg/rrt_planner.rviz"/>
-    <arg name="map_file" default="$(find rrt_planner)/cfg/map.yaml"/>
+    <arg name="map" default="map1"/>
+    <arg name="map_file" default="$(find rrt_planner)/cfg/$(arg map).yaml"/>
     <arg name="max_dist" default="10"/>
     <arg name="search_radius" default="30"/>
     <arg name="variant" default="rrt_star"/>
